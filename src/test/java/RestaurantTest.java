@@ -64,4 +64,20 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void total_amount_should_return_the_sum_of_prices_of_items_in_the_order() {
+
+        restaurant.addToMenu("Sweet corn soup", 119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+        restaurant.addToMenu("NonVeg lasagne", 369);
+
+        restaurant.order.add("Sweet corn soup");
+        restaurant.order.add("NonVeg lasagne");
+
+
+        int amount = restaurant.totalAmount(restaurant.order);
+
+        assertEquals(488,amount);
+    }
 }
